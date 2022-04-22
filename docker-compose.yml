@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+        tomcat_server:
+                image: ${TOMCAT_IMAGE}
+                env_file:
+                        - .env
+                container_name: ${CONTAINER}
+                ports:
+                        - "80:8080"
+                restart: unless-stopped
+                
+                healthcheck:
+                        test: curl --fail http://localhost/ || exit 1
+                        interval: 60s
+                        retries: 5
+                        start_period: 150s
+                        timeout: 10s
