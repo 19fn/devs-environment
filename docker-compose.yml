@@ -1,20 +1,19 @@
 version: '3.8'
 services:
-        dev_server:
-                image: ${DEV_IMAGE}
-                env_file:
-                        - .env
-                container_name: ${CONTAINER}
+        local-environment:
+                image: openjdk:8-alpine
+                container_name: devs_local_environment
                 ports:
                         - "80:8080"
                 restart: unless-stopped
                 volumes:
-                        - "./jars/${ARTIFACT}:/opt/${ARTIFACT}"
-                command: ["java","-jar","/opt/${ARTIFACT}"]
+                        - "./target/:/opt/target/"
+
+                command: ["java","-jar","/opt/target/booking-0.1.jar"]
 
                 healthcheck:
-                        test: curl --fail http://localhost:8080/ || exit 1
+                        test: wget --no-verbose --tries=1 --spider http://localhost:8080/api/v1.0/bookingFromZero/clients || exit 1
                         interval: 60s
                         retries: 5
-                        start_period: 60s
+                        start_period: 20s
                         timeout: 10s
