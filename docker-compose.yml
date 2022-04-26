@@ -2,13 +2,15 @@ version: '3.8'
 services:
         local-environment:
                 image: openjdk:8-alpine
-                container_name: devs_local_environment
+                container_name: local_environment
                 ports:
-                        - "80:8080"
+                        - "8080:8080"
                 restart: unless-stopped
+                
                 volumes:
                         - "./target/:/opt/target/"
-
+                
+                # CHANGE THIS
                 command: ["java","-jar","/opt/target/booking-0.1.jar"]
 
                 healthcheck:
