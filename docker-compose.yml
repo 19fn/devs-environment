@@ -11,7 +11,7 @@ services:
                         - "./target/:/opt/target/"
                 
                 # CHANGE THIS
-                command: ["java","-jar","/opt/target/booking-0.1.jar"]
+                command: ["java","-jar","/opt/target/(project name .jar)"]
 
                 healthcheck:
                         test: wget --no-verbose --tries=1 --spider http://localhost:8080/api/v1.0/bookingFromZero/clients || exit 1
