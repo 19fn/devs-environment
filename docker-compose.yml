@@ -8,14 +8,7 @@ services:
                 restart: unless-stopped
                 
                 volumes:
-                        - "./target/:/opt/target/"
+                        - "../target/:/opt/target/"
                 
                 # CHANGE THIS
                 command: ["java","-jar","/opt/target/(project name .jar)"]
-
-                healthcheck:
-                        test: wget --no-verbose --tries=1 --spider http://localhost:8080/api/v1.0/bookingFromZero/clients || exit 1
-                        interval: 60s
-                        retries: 5
-                        start_period: 20s
-                        timeout: 10s
