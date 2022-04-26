@@ -11,7 +11,19 @@
 ## Using Local Environment
 
 ### Change Project Name
-You need to change the project name in the docker-compose.yml file to your actual project
+You should change the project name in the docker-compose.yml file to your actual project.
 ```sh
 command: ["java","-jar","/opt/target/your-actual-project.jar"]
+```
+
+### Control.sh Script
+It's a good idea to inspect the control script from projects you don't yet know. You can look through it so everything looks normal,
+then running it:
+```sh
+[!] Usage: ./control.sh [start] || [stop]
+
+
+	Command:	Description:
+	start		Start local environment container
+	stop		Stop local environment container
 ```
