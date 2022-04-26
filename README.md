@@ -17,8 +17,7 @@ command: ["java","-jar","/opt/target/your-actual-project.jar"]
 ```
 
 ### Control.sh Script
-It's a good idea to inspect the control script from projects you don't yet know. You can look through it so everything looks normal,
-then running it:
+It's a good idea to inspect the control script. You can look through it so everything looks normal, then running it:
 ```sh
 [!] Usage: ./control.sh [start] || [stop]
 
