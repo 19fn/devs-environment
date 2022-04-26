@@ -1,6 +1,6 @@
 # Local Environment
 
 ### Requeriments
-> Maven
-> Docker
-> Docker Compose
+- Maven
+- Docker
+- Docker Compose
