@@ -1,14 +1,27 @@
 #!/bin/bash
 
-# Vars
-arg=$1
+##################################################################
+#####################       CONTROL.SH      ######################
+##################################################################
+# This script will look for the docker compose file to be executed
+# so, if no arguments were passed, a help panel will be displayed. 
+# The script will accept only two arguments. The first: 'start' 
+# to run docker-compose up --detach. And, the second: 'stop' to 
+# run docker-compose down. Note, that you might need privileged
+# permissions (root) to run this script successfully. Also, dont
+# forget to change the docker-compose.yml file with the actual
+# information of your project.
+#################################################################
+#################################################################
+
+# variables
+ARG=$1
 DOCKER_COMPOSE_FILE="docker-compose.yml"
 DC_UP="docker-compose up --detach"
 DC_DOWN="docker-compose down"
 
-# Errors
+# errors
 E_DOCKER_COMPOSE="[!] Missing file: 'docker-compose.yml' ..."
-E_TARGET_NOT_FOUND="[!] Directory: 'target' not found ..."
 
 usage()
 {
@@ -18,11 +31,6 @@ usage()
 	exit 1
 }
 
-# target directory
-if ! [[ $(find ../ -maxdepth 1 -type d -name "target") ]]; then
-	echo; echo ${E_TARGET_NOT_FOUND}; echo
-fi
-
 # docker-compose.yml file
 if [ ! -f ${DOCKER_COMPOSE_FILE} ]; then
 	echo; echo ${E_DOCKER_COMPOSE}; echo
@@ -30,7 +38,7 @@ if [ ! -f ${DOCKER_COMPOSE_FILE} ]; then
 fi
 
 # Main
-case ${arg} in
+case ${ARG} in
 	start) ${DC_UP} ;;
 	stop) ${DC_DOWN} ;;
 	*) usage ;;

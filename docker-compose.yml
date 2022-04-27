@@ -9,7 +9,7 @@ services:
                
                 # CHANGE THIS 
                 volumes:
-                        - "../target/:/opt/target/"
+                        - "path/to/target/:/opt/target/"
                 
                 # CHANGE THIS
-                command: ["java","-jar","/opt/target/(project name .jar)"]
+                command: ["java","-jar","/opt/target/your-actual-project.jar"]
