@@ -10,13 +10,16 @@
 
 ## Using Local Environment
 
-### Change Project Name
-You can change the path to your target directory as you wish. Also, you should change the project name in the docker-compose.yml file to your actual project.
+### Change Target Directory
+You should change the path to your target directory in the docker-compose.yml file.
 ```sh
-volumes: "path/to/target/:/opt/target/"
-.
-.
-.
+volumes:
+        - "path/to/target/:/opt/target/"
+```
+
+### Change Project Name
+You should change the project name in the docker-compose.yml file to your actual project.
+```sh
 command: ["java","-jar","/opt/target/your-actual-project.jar"]
 ```
 
