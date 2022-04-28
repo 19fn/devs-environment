@@ -26,10 +26,12 @@ command: ["java","-jar","/opt/target/your-actual-project.jar"]
 ### Control.sh Script
 It's a good idea to inspect the control script. You can look through it so everything looks normal, then running it:
 ```sh
-[!] Usage: ./control.sh [start] || [stop]
+[!] Usage: ./control.sh [start] || [stop] || [logs] || [state]
 
 
 	Command:	Description:
 	start		Start local environment container
 	stop		Shutdown local environment container
+	logs		Show containers logs
+	state		Show containers state
 ```
