@@ -19,6 +19,8 @@ ARG=$1
 DOCKER_COMPOSE_FILE="docker-compose.yml"
 DC_UP="docker-compose up --detach"
 DC_DOWN="docker-compose down"
+DC_LOGS="docker-compose logs"
+DC_PS="docker-compose ps"
 
 # errors
 E_DOCKER_COMPOSE="[!] Missing file: 'docker-compose.yml' ..."
@@ -26,7 +28,7 @@ E_DOCKER_COMPOSE="[!] Missing file: 'docker-compose.yml' ..."
 usage()
 {
 	echo
-	echo -e "[!] Usage: $0 [start] || [stop]\n\n\n\tCommand:\tDescription:\n\tstart\t\tStart local environment container\n\tstop\t\tShutdown local environment container"
+	echo -e "[!] Usage: $0 [start] || [stop] || [logs] || [state]\n\n\n\tCommand:\tDescription:\n\tstart\t\tStart local environment container\n\tstop\t\tShutdown local environment container\n\tlogs\t\tShow containers logs\n\tstate\t\tShow containers state"
 	echo
 	exit 1
 }
@@ -41,5 +43,7 @@ fi
 case ${ARG} in
 	start) ${DC_UP} ;;
 	stop) ${DC_DOWN} ;;
+	logs) ${DC_LOGS} ;;
+	state) ${DC_PS} ;;
 	*) usage ;;
 esac	
