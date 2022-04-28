@@ -1,15 +1,40 @@
 version: '3.8'
 services:
+        mssql-db:
+                image: mcr.microsoft.com/mssql/server:2019-latest
+                container_name: mssql_db
+                
+                # CHANGE THIS
+                environment:
+                        ACCEPT_EULA: Y
+                        MSSQL_PID: Express
+                        SA_PASSWORD: your-strong-password-here
+                ports:
+                        - "1433:1433"
+
+                restart: on-failure
+
+                # CHANGE THIS
+                volumes:
+                        - "path/to/project:/opt/project"
+
+                # CHANGE THIS
+                healthcheck:
+                        test: ["CMD", "./opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "your-strong-password-here", "-i", "path/to/project/SchemaScript.sql"]
+                        interval: 30s
+                        timeout: 10s
+                        retries: 5
+
         local-environment:
                 image: openjdk:8-alpine
                 container_name: local_environment
                 ports:
                         - "8080:8080"
-                restart: unless-stopped
+                restart: on-failure
                
                 # CHANGE THIS 
                 volumes:
-                        - "path/to/target:/opt/target/"
+                        - "path/to/project/target:/opt/target/"
                 
                 # CHANGE THIS
                 command: ["java","-jar","/opt/target/your-actual-project.jar"]
