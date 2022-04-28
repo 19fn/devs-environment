@@ -38,3 +38,9 @@ services:
                 
                 # CHANGE THIS
                 command: ["java","-jar","/opt/target/your-actual-project.jar"]
+
+                depends_on:
+                        mssql-db:
+                                condition: service_healthy
+                links:
+                        - mssql-db
