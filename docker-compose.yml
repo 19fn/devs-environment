@@ -27,7 +27,7 @@ services:
 
         local-environment:
                 image: openjdk:8-alpine
-                container_name: local_environment
+                container_name: java_environment
                 ports:
                         - "8080:8080"
                 restart: on-failure
