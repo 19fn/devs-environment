@@ -3,24 +3,24 @@ services:
         mssql-db:
                 image: mcr.microsoft.com/mssql/server:2019-latest
                 container_name: mssql_db
+                user: root
                 
                 # CHANGE THIS
                 environment:
                         ACCEPT_EULA: Y
                         MSSQL_PID: Express
-                        SA_PASSWORD: your-strong-password-here
+                        SA_PASSWORD: brown1087.
                 ports:
                         - "1433:1433"
 
                 restart: on-failure
 
-                # CHANGE THIS
                 volumes:
-                        - "path/to/project:/opt/project"
+                        - "/opt/mssql-db:/var/opt/mssql"
 
                 # CHANGE THIS
                 healthcheck:
-                        test: ["CMD", "./opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "your-strong-password-here", "-i", "path/to/project/SchemaScript.sql"]
+                        test: ["CMD", "./opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "brown1087."]
                         interval: 30s
                         timeout: 10s
                         retries: 5
@@ -34,13 +34,11 @@ services:
                
                 # CHANGE THIS 
                 volumes:
-                        - "path/to/project/target:/opt/target/"
+                        - "~/Documents/bookingFromZero/target:/opt/target/"
                 
                 # CHANGE THIS
-                command: ["java","-jar","/opt/target/your-actual-project.jar"]
+                command: ["java","-jar","/opt/target/booking-0.0.1-SNAPSHOT.jar"]
 
                 depends_on:
                         mssql-db:
                                 condition: service_healthy
-                links:
-                        - mssql-db
