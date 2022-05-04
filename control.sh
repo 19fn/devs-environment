@@ -15,6 +15,7 @@
 #################################################################
 
 # variables
+PASSWORD="your-strong-password-here"
 ARG=$1
 DOCKER_COMPOSE_FILE="docker-compose.yml"
 SQL_SCRIPT="schema.sql"
@@ -42,7 +43,7 @@ initializeDB()
 		if [ -f ${SQL_SCRIPT} ]; then
 			for i in {1..50}; do
 				docker cp ./${SQL_SCRIPT} mssql_db:/opt && \
-					docker exec -it mssql_db /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P brown1087. -i /opt/${SQL_SCRIPT} > /tmp/mssql_schema.logs 2>&1
+					docker exec -it mssql_db /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P ${PASSWORD} -i /opt/${SQL_SCRIPT} > /tmp/mssql_schema.logs 2>&1
 				if [ $? -eq 0 ]; then
 					echo;echo "[+] schema.sql script finished successfully ...";echo
 					break
