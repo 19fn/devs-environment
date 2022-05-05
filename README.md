@@ -10,6 +10,13 @@
 
 ## Using Local Environment
 
+### Change Database Password
+You should change the password for the database in the docker-compose.yml file.
+```sh
+environment:
+        MYSQL_ROOT_PASSWORD: your-strong-password-here
+```
+
 ### Change Target Directory
 You should change the path to your target directory in the docker-compose.yml file.
 ```sh
