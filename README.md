@@ -26,21 +26,27 @@ command: ["java","-jar","/opt/target/your-actual-project.jar"]
 ### Useful Commands
 Here you will found some useful commands that you might use.
 ```sh
+# Check versions.
+sudo docker --version
+sudo docker-compose --version
+
 # Check if docker engine is running.
 sudo service docker status
 # If docker isn`t running you should start it.
 sudo service docker start
-# Stop docker engine
+# Stop docker engine.
 sudo service docker stop
 
-# Start docker compose in background
+# Start docker compose in background.
 sudo docker-compose up -d
-# Stop docker compose 
+# Stop docker compose.
 sudo docker-compose down
-# Show docker compose logs
+# Show docker compose logs.
 sudo docker-compose logs
-# Show docker compose state
+# Show docker compose state.
 sudo docker-compose ps
-# Start docker compose database only
-sudo docker-compose up -d database
+# Start docker compose service.
+sudo docker-compose up -d service_name
+# Restart docker-compose service.
+sudo docker-compose restart service_name
 ```

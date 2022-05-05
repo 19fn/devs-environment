@@ -1,4 +1,4 @@
-# CHECK VERSION
+# Version '3.8' only will work with a least of docker-compose version 1.29.0
 version: '3.8'
 services:
         database:
@@ -22,7 +22,7 @@ services:
                         timeout: 10s
                         retries: 5
         
-        java-project:
+        project:
                 image: openjdk:8-alpine
                 container_name: java_project
                 ports:
@@ -30,13 +30,12 @@ services:
                 restart: on-failure
 
                 # CHANGE THIS 
-                #volumes:
-                #        - "path/to/project/target:/opt/target/"
+                volumes:
+                        - "path/to/project/target:/opt/target/"
 
                 # CHANGE THIS
-                #command: ["java","-jar","/opt/target/your-actual-project.jar"]
+                command: ["java","-jar","/opt/target/your-actual-project.jar"]
 
                 depends_on:
                         database:
                                 condition: service_healthy
-       
