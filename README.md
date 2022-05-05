@@ -6,7 +6,7 @@
 - `Java` should be installed (v8.0 or more recent is fine but we prefer 11.0 and newer)
 - `Maven` should be installed (recommended v3.8.5 or higher)
 - `Docker` should be installed (recommended v20.10.14 or higher)
-- `Docker Compose` should be installed (recommended v1.29.2 or higher)
+- `Docker Compose` should be installed (recommended v1.29.0 or higher)
 
 ## Using Local Environment
 
@@ -23,15 +23,24 @@ You should change the project name in the docker-compose.yml file to your actual
 command: ["java","-jar","/opt/target/your-actual-project.jar"]
 ```
 
-### Control.sh Script
-It's a good idea to inspect the control script. You can look through it so everything looks normal, then running it:
+### Useful Commands
+Here you will found some useful commands that you might use.
 ```sh
-[!] Usage: ./control.sh [start] || [stop] || [logs] || [state]
+# Check if docker engine is running.
+sudo service docker status
+# If docker isn`t running you should start it.
+sudo service docker start
+# Stop docker engine
+sudo service docker stop
 
-
-	Command:	Description:
-	start		Start local environment container
-	stop		Shutdown local environment container
-	logs		Show containers logs
-	state		Show containers state
+# Start docker compose in background
+sudo docker-compose up -d
+# Stop docker compose 
+sudo docker-compose down
+# Show docker compose logs
+sudo docker-compose logs
+# Show docker compose state
+sudo docker-compose ps
+# Start docker compose database only
+sudo docker-compose up -d database
 ```

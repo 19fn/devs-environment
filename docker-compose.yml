@@ -1,3 +1,4 @@
+# CHECK VERSION
 version: '3.8'
 services:
         database:
