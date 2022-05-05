@@ -1,44 +1,41 @@
 version: '3.8'
 services:
-        mssql-db:
-                image: mcr.microsoft.com/mssql/server:2019-latest
-                container_name: mssql_db
-                user: root
-                
+        database:
+                image: mysql:8.0
+                container_name: mysql_db
+
                 # CHANGE THIS
                 environment:
-                        ACCEPT_EULA: Y
-                        MSSQL_PID: Express
-                        SA_PASSWORD: your-strong-password-here
+                        MYSQL_ROOT_PASSWORD: your-strong-password-here
                 ports:
-                        - "1433:1433"
+                        - "3306:3306"
 
                 restart: on-failure
 
                 volumes:
-                        - "/opt/mssql-db:/var/opt/mssql"
+                        - "/opt/mysql-db:/var/lib/mysql"
 
-                # CHANGE THIS
                 healthcheck:
-                        test: ["CMD", "./opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "your-strong-password-here"]
+                        test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
                         interval: 30s
                         timeout: 10s
                         retries: 5
-
-        local-environment:
+        
+        java-project:
                 image: openjdk:8-alpine
-                container_name: java_environment
+                container_name: java_project
                 ports:
                         - "8080:8080"
                 restart: on-failure
-               
+
                 # CHANGE THIS 
-                volumes:
-                        - "path/to/project/target:/opt/target/"
-                
+                #volumes:
+                #        - "path/to/project/target:/opt/target/"
+
                 # CHANGE THIS
-                command: ["java","-jar","/opt/target/your-actual-project.jar"]
+                #command: ["java","-jar","/opt/target/your-actual-project.jar"]
 
                 depends_on:
-                        mssql-db:
+                        database:
                                 condition: service_healthy
+       
