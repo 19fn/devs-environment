@@ -1,4 +1,5 @@
 # Version '3.8' only will work with a least of docker-compose version 1.29.0
+# You should change all the tags that have an 'CHANGE THIS' above.
 version: '3.8'
 services:
         database:
