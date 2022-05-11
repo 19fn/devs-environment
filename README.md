@@ -10,11 +10,18 @@
 
 ## Using Local Environment
 
-### Change Database Password
+### Change Database Environment Variables
 You should change the password for the database in the docker-compose.yml file.
 ```sh
 environment:
-        MYSQL_ROOT_PASSWORD: your-strong-password-here
+	# This variable specifies the password that will be set for the MySQL root superuser account
+        MYSQL_ROOT_PASSWORD: MyStrongPassword123
+        # Specify the name of a database to be created on startup
+	MYSQL_DATABASE: DB_example
+	# Used to create a new user
+        MYSQL_USER: myuser
+	# Set user password
+        MYSQL_PASSWORD: MyUserPassword123
 ```
 
 ### Change Target Directory
