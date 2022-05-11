@@ -8,7 +8,10 @@ services:
 
                 # CHANGE THIS
                 environment:
-                        MYSQL_ROOT_PASSWORD: your-strong-password-here
+                        MYSQL_ROOT_PASSWORD: your-strong-root-password-here
+                        MYSQL_DATABASE: your-database-name-here
+                        MYSQL_USER: your-user-name-here
+                        MYSQL_PASSWORD: your-strong-user-password-here
                 ports:
                         - "3306:3306"
 
@@ -32,7 +35,7 @@ services:
 
                 # CHANGE THIS 
                 volumes:
-                        - "path/to/project/target:/opt/target/"
+                        - "path/to/target:/opt/target/"
 
                 # CHANGE THIS
                 command: ["java","-jar","/opt/target/your-actual-project.jar"]
