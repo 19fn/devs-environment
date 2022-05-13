@@ -11,10 +11,10 @@
 ## Using Local Environment
 
 ### Change Database Environment Variables
-You should change the password for the database in the docker-compose.yml file.
+You should change the environment variables for the database in the docker-compose.yml file.
 ```sh
 environment:
-	# This variable specifies the password that will be set for the MySQL root superuser account
+	# Specify the password that will be set for the MySQL root superuser account
         MYSQL_ROOT_PASSWORD: MyStrongPassword123
         # Specify the name of a database to be created on startup
 	MYSQL_DATABASE: DB_example
@@ -46,7 +46,7 @@ sudo docker-compose --version
 
 # Check if docker engine is running.
 sudo service docker status
-# If docker isn`t running you should start it.
+# Start docker engine.
 sudo service docker start
 # Stop docker engine.
 sudo service docker stop
