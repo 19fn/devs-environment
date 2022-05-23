@@ -2,9 +2,9 @@
 # You should change all the tags that have an 'CHANGE THIS' above.
 version: '3.8'
 services:
-        database:
+        mysql:
                 image: mysql:8.0
-                container_name: mysql_db
+                container_name: mysql
 
                 # CHANGE THIS
                 environment:
@@ -26,9 +26,9 @@ services:
                         timeout: 10s
                         retries: 5
         
-        project:
+        java:
                 image: openjdk:11
-                container_name: java_project
+                container_name: java
                 ports:
                         - "8080:8080"
                 restart: on-failure
