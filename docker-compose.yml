@@ -41,5 +41,5 @@ services:
                 command: ["java","-jar","/opt/target/your-actual-project.jar"]
 
                 depends_on:
-                        postr:
+                        mysql:
                                 condition: service_healthy
