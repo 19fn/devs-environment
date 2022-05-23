@@ -13,5 +13,4 @@ getIP()
 		echo;echo "[!] IP can not be found.";echo
 	fi
 }
-
 getIP
