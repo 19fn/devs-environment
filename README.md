@@ -66,6 +66,6 @@ sudo docker-compose ps
 sudo docker-compose up -d service_name
 # Restart docker-compose service.
 sudo docker-compose restart service_name
-# Execute a command in a container
-sudo docker-compose exec -i container_name command_to_execute
+# Execute command in a container
+sudo docker exec -i container_name command_to_execute
 ```
