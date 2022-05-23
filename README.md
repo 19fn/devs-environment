@@ -40,7 +40,7 @@ command: ["java","-jar","/opt/target/your-actual-project.jar"]
 ### Useful Commands
 Here you will found some useful commands that you might use.
 ```sh
-# Check IP
+# Check ip address.
 ./getIP.sh
 
 # Check versions.
