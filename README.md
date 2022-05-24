@@ -56,7 +56,7 @@ sudo service docker stop
 
 # Start docker compose in background.
 sudo docker-compose up -d
-# Stop docker compose.
+# Shutdown docker compose.
 sudo docker-compose down
 # Show docker compose logs.
 sudo docker-compose logs
@@ -64,6 +64,8 @@ sudo docker-compose logs
 sudo docker-compose ps
 # Start docker compose service.
 sudo docker-compose up -d service_name
+# Stop docker compose service.
+sudo docker-compose stop service_name
 # Restart docker-compose service.
 sudo docker-compose restart service_name
 # Execute command in a container
