@@ -41,7 +41,7 @@ command: ["java","-jar","/opt/target/your-actual-project.jar"]
 Here you will found some useful commands that you might use.
 ```sh
 # Check ip address.
-./getIP.sh
+python3 getIP.py
 
 # Check versions.
 sudo docker --version
