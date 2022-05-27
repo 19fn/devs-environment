@@ -11,23 +11,40 @@ services:
                         MYSQL_ROOT_PASSWORD: your-strong-root-password-here
                         MYSQL_DATABASE: your-database-name-here
                         MYSQL_USER: your-user-name-here
-                        MYSQL_PASSWORD: your-strong-user-password-here
+                        MYSQL_PASSWORD: your-user-password-here
                 ports:
                         - "3306:3306"
 
                 restart: on-failure
 
                 volumes:
-                        - "/opt/mysql-db:/var/lib/mysql"
+                        - "/opt/mysql-data:/var/lib/mysql"
 
                 healthcheck:
                         test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
                         interval: 30s
                         timeout: 10s
                         retries: 5
-        
+
+        pma:
+                image: phpmyadmin:5
+                container_name: phpmyadmin
+
+                environment:
+                        PMA_HOST: mysql
+                        PMA_PORT: 3306
+                        PMA_ARBITRARY: 1
+                ports:
+                        - "8081:80"
+                
+                restart: on-failure
+                
+                depends_on:
+                        mysql:
+                                condition: service_healthy
+
         java:
-                image: openjdk:11
+                image: openjdk:17
                 container_name: java
                 ports:
                         - "8080:8080"
