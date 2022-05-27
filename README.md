@@ -11,7 +11,7 @@
 ## Using Local Environment
 
 ### Change Database Environment Variables
-You should change the environment variables for the mysql database in the docker-compose.yml file.
+You should change the environment variables for MySQL database in the docker-compose.yml file.
 ```sh
 environment:
 	# Specify the password that will be set for the MySQL root superuser account
@@ -38,10 +38,10 @@ command: ["java","-jar","/opt/target/your-actual-project.jar"]
 ```
 
 ### phpMyAdmin
-You should use the same credentials that you use in the mysql database. 
-phpMyAdmin is a free software tool written in PHP, intended to handle the administration of MySQL over the Web.
+You should use the same credentials that you use in MySQL. 
+phpMyAdmin run on:
 ```sh
-phpMyAdmin run on http://localhost:8081
+http://localhost:8081
 ```
 
 ### Useful Commands
