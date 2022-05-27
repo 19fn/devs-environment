@@ -14,7 +14,6 @@ services:
                         MYSQL_PASSWORD: your-user-password-here
                 ports:
                         - "3306:3306"
-
                 restart: on-failure
 
                 volumes:
@@ -36,7 +35,6 @@ services:
                         PMA_ARBITRARY: 1
                 ports:
                         - "8081:80"
-                
                 restart: on-failure
                 
                 depends_on:
