@@ -11,13 +11,13 @@
 ## Using Local Environment
 
 ### Change Database Environment Variables
-You should change the environment variables for the database in the docker-compose.yml file.
+You should change the environment variables for the mysql database in the docker-compose.yml file.
 ```sh
 environment:
 	# Specify the password that will be set for the MySQL root superuser account
         MYSQL_ROOT_PASSWORD: MyStrongPassword123
         # Specify the name of a database to be created on startup
-	MYSQL_DATABASE: DB_example
+	MYSQL_DATABASE: mydb
 	# Used to create a new user
         MYSQL_USER: myuser
 	# Set user password
@@ -35,6 +35,13 @@ volumes:
 You should change the project name in the docker-compose.yml file to your actual project.
 ```sh
 command: ["java","-jar","/opt/target/your-actual-project.jar"]
+```
+
+### phpMyAdmin
+You should use the same credentials that you use in the mysql database. 
+phpMyAdmin is a free software tool written in PHP, intended to handle the administration of MySQL over the Web.
+```sh
+phpMyAdmin run on http://localhost:8081
 ```
 
 ### Useful Commands
@@ -55,19 +62,34 @@ sudo service docker start
 sudo service docker stop
 
 # Start docker compose in background.
+# All services
 sudo docker-compose up -d
+# One service
+sudo docker-compose up -d mysql
+sudo docker-compose up -d pma
+sudo docker-compose up -d java
 # Shutdown docker compose.
 sudo docker-compose down
+# Start docker compose container.
+sudo docker-compose start mysql
+sudo docker-compose start pma
+sudo docker-compose start java
+# Stop docker compose container.
+sudo docker-compose stop mysql
+sudo docker-compose stop pma
+sudo docker-compose stop java
+# Restart docker-compose container.
+sudo docker-compose restart mysql
+sudo docker-compose restart pma
+sudo docker-compose restart java
 # Show docker compose logs.
-sudo docker-compose logs
+sudo docker-compose logs mysql
+sudo docker-compose logs pma
+sudo docker-compose logs java
 # Show docker compose state.
 sudo docker-compose ps
-# Start docker compose service.
-sudo docker-compose up -d service_name
-# Stop docker compose service.
-sudo docker-compose stop service_name
-# Restart docker-compose service.
-sudo docker-compose restart service_name
-# Execute command in a container
-sudo docker exec -i container_name command_to_execute
+# Execute any given command within a container.
+sudo docker exec -it mysql /bin/bash
+sudo docker exec -it pma /bin/bash
+sudo docker exec -it java /bin/bash
 ```
