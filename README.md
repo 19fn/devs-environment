@@ -6,7 +6,7 @@
 - `Java` should be installed (v11 or more recent is fine but we prefer 17 and newer)
 - `Maven` should be installed (recommended v3.8.5 or higher)
 - `Docker` should be installed (recommended v20.10.14 or higher)
-- `Docker Compose` should be installed (recommended v1.29.0 or higher)
+- `Docker-Compose` should be installed (recommended v1.29.0 or higher)
 
 ## Using Local Environment
 
