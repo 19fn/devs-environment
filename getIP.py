@@ -13,4 +13,5 @@ def get_ip():
         s.close()
     return print(f"\n[+] IP: {IP}\n")
 
-get_ip()
+if __name__ == "__main__":
+    get_ip()
