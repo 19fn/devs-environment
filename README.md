@@ -39,9 +39,9 @@ command: ["java","-jar","/opt/target/your-actual-project.jar"]
 
 ### phpMyAdmin
 You should use the same credentials that you use in MySQL. 
-phpMyAdmin run on:
 ```sh
-http://localhost:8081
+# phpMyAdmin run on:
+                    http://localhost:8081
 ```
 
 ### Useful Commands
